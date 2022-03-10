@@ -5,6 +5,35 @@ bin/kaocha suite-a
 bin/kaocha --focus suite-a
 ```
 
+Config:
+
+```
+% bin/kaocha --print-config
+{:kaocha/tests
+ [{:kaocha.testable/id :suite-a,
+   :kaocha.testable/type :kaocha.type/clojure.test,
+   :kaocha/ns-patterns ["-test$"],
+   :kaocha/source-paths ["suite-a/src"],
+   :kaocha/test-paths ["suite-a/test"]}
+  {:kaocha.testable/id :suite-b,
+   :kaocha.testable/type :kaocha.type/clojure.test,
+   :kaocha/ns-patterns ["-test$"],
+   :kaocha/source-paths ["suite-b/src"],
+   :kaocha/test-paths ["suite-b/test"]}],
+ :kaocha/fail-fast? false,
+ :kaocha/color? true,
+ :kaocha/cli-options {:config-file "tests.edn", :print-config true},
+ :kaocha.plugin.randomize/seed 716010007,
+ :kaocha.plugin.randomize/randomize? true,
+ :kaocha/plugins
+ [:kaocha.plugin/randomize
+  :kaocha.plugin/filter
+  :kaocha.plugin/capture-output
+  :repro/plugin],
+ :kaocha.plugin.capture-output/capture-output? true,
+ :kaocha/reporter [kaocha.report/dots]}
+```
+
 Test plan:
 
 ```
